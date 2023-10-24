@@ -1,9 +1,7 @@
 import java.util.*;
 
-public class Main {
-
+public class SimpleSolution {
     public static void main(String[] args) {
-
         HashMap<String, String> citiesToLocation = new HashMap<>();
         citiesToLocation.put("London", "Greater London");
         citiesToLocation.put("Manchester", "Greater Manchester");
@@ -13,30 +11,15 @@ public class Main {
         citiesToLocation.put("Belfast", "Ireland");
         citiesToLocation.put("Aberdeen", "Scotland");
 
-
         System.out.println(citiesToLocation);
         List<String> cities = new LinkedList<String>(citiesToLocation.keySet());
+        Collections.sort(cities);
         Iterator<String> iterator = cities.iterator();
-        List<String> newList = new ArrayList<>();
-
-        newList.add(iterator.next());
-
         while (iterator.hasNext()) {
-            String element = iterator.next();
-
-            for (int i = 0; i < newList.size(); i++) {
-                if (newList.get(i).compareTo(element) > 0) {
-                    newList.add(i, element);
-                    break;
-                }
-            }
-            iterator.remove();
-
+            String c = iterator.next();
+            System.out.println("City: " + c + " Location: " + citiesToLocation.get(c));
         }
 
-        for (String city : newList) {
-            System.out.println("City: " + city + " Location: " + citiesToLocation.get(city));
-        }
 
     }
 
